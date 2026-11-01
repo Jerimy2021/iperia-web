@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Nix / direnv
+.direnv/
+
+# Testing
+coverage/
+playwright-report/
+test-results/
+blob-report/
+
+# Generated API client
+src/infrastructure/http/generated/
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.log
+npm-debug.log*
