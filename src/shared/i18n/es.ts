@@ -36,6 +36,10 @@ export const es = {
       GERENCIA_EHS: "Gerencia EHS",
       BRIGADISTA: "Brigadista",
     },
+    noScreensTitle: "Todavía no hay pantallas para tu rol en este panel",
+    noScreensDescription:
+      "Las pantallas de operario y brigadista se gestionan desde la app de planta (iperia-mobile).",
+    appName: "IperIA",
   },
   iperc: {
     matriz: {
