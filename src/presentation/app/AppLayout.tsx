@@ -12,7 +12,7 @@ export function AppLayout() {
     <div className="flex min-h-screen flex-col">
       <header className="flex flex-col gap-3 border-b border-neutral-200 bg-neutral-0 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-6">
-          <span className="text-lg font-semibold text-brand-700">{t.appName}</span>
+          <span className="text-lg font-semibold text-brand-700">{t.nav.appName}</span>
           <NavByRole />
         </div>
         {user && (

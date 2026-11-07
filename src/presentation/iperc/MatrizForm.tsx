@@ -17,6 +17,7 @@ function parseScale(value: unknown): number | null {
 export function MatrizForm() {
   const t = useTranslation();
   const calcular = useCalcularRiesgo();
+  const { mutate: calcularRiesgo } = calcular;
   const save = useSaveMatrizItem();
 
   const {
@@ -34,10 +35,9 @@ export function MatrizForm() {
     const p = parseScale(probabilidad);
     const s = parseScale(severidad);
     if (p !== null && s !== null) {
-      calcular.mutate({ probabilidad: p, severidad: s });
+      calcularRiesgo({ probabilidad: p, severidad: s });
     }
-    // calcular.mutate es estable entre renders (TanStack Query).
-  }, [probabilidad, severidad, calcular.mutate]);
+  }, [probabilidad, severidad, calcularRiesgo]);
 
   const onSubmit = async (values: MatrizFormValues) => {
     await save.mutateAsync(values);

@@ -12,7 +12,7 @@ export function NavByRole() {
   }
 
   return (
-    <nav aria-label={t.appName} className="flex gap-4">
+    <nav aria-label={t.nav.appName} className="flex gap-4">
       {canAccessMatrizIperc(user.role) && (
         <NavLink
           to="/iperc"

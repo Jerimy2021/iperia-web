@@ -1,31 +1,11 @@
-import {
-  createContext,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
-import type { User } from "@core/auth/User";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { Session } from "@core/auth/Session";
 import type { LoginCredentials } from "@application/auth/ports";
 import { loginUseCase, logoutUseCase } from "@application/auth/useCases";
 import { AuthHttpRepository } from "@infrastructure/auth/AuthHttpRepository";
 import { tokenStorage } from "@infrastructure/auth/TokenStorage";
 import { setUnauthorizedHandler } from "@infrastructure/http/apiClient";
-
-export type SessionEndReason = "expired" | "logged-out";
-
-export interface AuthContextValue {
-  user: User | null;
-  isAuthenticating: boolean;
-  sessionEndReason: SessionEndReason | null;
-  login(credentials: LoginCredentials): Promise<void>;
-  logout(): Promise<void>;
-}
-
-export const AuthContext = createContext<AuthContextValue | null>(null);
+import { AuthContext, type AuthContextValue, type SessionEndReason } from "./context";
 
 const authRepository = new AuthHttpRepository();
 
