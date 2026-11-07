@@ -1,6 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { MatrizItemInput } from "@core/iperc/MatrizItem";
-import { calcularRiesgoUseCase, listMatrizUseCase, saveMatrizItemUseCase } from "@application/iperc/useCases";
+import {
+  calcularRiesgoUseCase,
+  listMatrizUseCase,
+  saveMatrizItemUseCase,
+} from "@application/iperc/useCases";
 import { ipercRepository } from "./ipercRepository";
 
 const MATRIZ_QUERY_KEY = ["iperc", "matriz"];

@@ -8,7 +8,13 @@ import prettier from "eslint-config-prettier";
 
 export default tseslint.config(
   {
-    ignores: ["dist", "coverage", "playwright-report", "public", "src/infrastructure/http/generated"],
+    ignores: [
+      "dist",
+      "coverage",
+      "playwright-report",
+      "public",
+      "src/infrastructure/http/generated",
+    ],
   },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],

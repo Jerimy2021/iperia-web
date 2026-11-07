@@ -46,7 +46,10 @@ export function LoginPage() {
         <p className="mt-1 text-sm text-neutral-600">{t.auth.login.subtitle}</p>
 
         {sessionEndReason === "expired" && (
-          <p role="alert" className="mt-4 rounded-md bg-risk-moderado/10 p-3 text-sm text-neutral-800">
+          <p
+            role="alert"
+            className="mt-4 rounded-md bg-risk-moderado/10 p-3 text-sm text-neutral-800"
+          >
             {t.auth.session.expiredMessage}
           </p>
         )}
