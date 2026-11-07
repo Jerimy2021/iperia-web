@@ -25,6 +25,7 @@
           buildInputs = with pkgs; [
             nodejs_22
             gh
+            playwright-driver.browsers
           ];
 
           shellHook = ''
@@ -41,6 +42,12 @@
             if command -v gh &> /dev/null; then
               echo "GitHub CLI Version: $(gh --version | head -n1)"
             fi
+
+            # En NixOS los binarios genéricos que descarga "npx playwright
+            # install" fallan (faltan libs FHS como libglib-2.0.so.0).
+            # Usamos el navegador que empaqueta nixpkgs en su lugar.
+            export PLAYWRIGHT_BROWSERS_PATH="${pkgs.playwright-driver.browsers}"
+            export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 
             echo "--------------------------------------------------------"
             echo "Sistema detectado: ${system}"
