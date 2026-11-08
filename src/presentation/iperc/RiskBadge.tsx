@@ -1,11 +1,17 @@
+import type { CSSProperties } from "react";
 import type { RiskLevel } from "@core/iperc/RiskLevel";
 import { useTranslation } from "@shared/i18n/useTranslation";
 
-const badgeClasses: Record<RiskLevel, string> = {
-  aceptable: "bg-risk-aceptable/10 text-risk-aceptable border-risk-aceptable/30",
-  moderado: "bg-risk-moderado/10 text-risk-moderado border-risk-moderado/30",
-  importante: "bg-risk-importante/10 text-risk-importante border-risk-importante/30",
-  intolerable: "bg-risk-intolerable/10 text-risk-intolerable border-risk-intolerable/30",
+/**
+ * Risk-level pill for the matriz, colored from the DS `--nivel-*` tokens. The
+ * DS spells the top band "intolerante"; the domain keeps "intolerable" — only
+ * the color is mapped. `resultado` is whatever R = P × S the backend returned.
+ */
+const nivelKey: Record<RiskLevel, string> = {
+  aceptable: "aceptable",
+  moderado: "moderado",
+  importante: "importante",
+  intolerable: "intolerante",
 };
 
 interface RiskBadgeProps {
@@ -15,10 +21,22 @@ interface RiskBadgeProps {
 
 export function RiskBadge({ nivelRiesgo, resultado }: RiskBadgeProps) {
   const t = useTranslation();
+  const key = nivelKey[nivelRiesgo];
+  const style: CSSProperties = {
+    background: `var(--nivel-${key}-bg)`,
+    color: `var(--nivel-${key}-text)`,
+    borderColor: `var(--nivel-${key})`,
+  };
   return (
     <span
-      className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm font-medium ${badgeClasses[nivelRiesgo]}`}
+      className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-base font-semibold"
+      style={style}
     >
+      <span
+        className="h-2 w-2 flex-none rounded-full"
+        style={{ background: `var(--nivel-${key})` }}
+        aria-hidden
+      />
       {t.iperc.matriz.riskLevels[nivelRiesgo]} ({resultado})
     </span>
   );

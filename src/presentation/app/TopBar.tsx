@@ -33,7 +33,9 @@ export function TopBar({ title, userName, roleLabel, onMenu, onLogout }: TopBarP
         <Icon name="menu" size={20} />
       </button>
 
-      <h1 className="min-w-0 flex-1 truncate text-xl font-bold">{title}</h1>
+      <span className="min-w-0 flex-1 truncate text-xl font-bold text-[color:var(--text-primary)]">
+        {title}
+      </span>
 
       <div className="flex items-center gap-3">
         <span className="hidden items-center gap-2 sm:flex">
