@@ -2,7 +2,7 @@ import { z } from "zod";
 import { es } from "@shared/i18n/es";
 
 export const loginSchema = z.object({
-  email: z.string().email(es.auth.login.invalidEmail),
+  email: z.email(es.auth.login.invalidEmail),
   password: z.string().min(1, es.common.requiredField),
 });
 

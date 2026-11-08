@@ -5,7 +5,7 @@ import { useTranslation } from "@shared/i18n/useTranslation";
 import { TextField } from "@shared/ui/TextField";
 import { Button } from "@shared/ui/Button";
 import { ErrorMessage } from "@shared/ui/ErrorMessage";
-import { matrizSchema, type MatrizFormValues } from "./matrizSchema";
+import { matrizSchema, type MatrizFormInput, type MatrizFormValues } from "./matrizSchema";
 import { useCalcularRiesgo, useSaveMatrizItem } from "./useMatriz";
 import { RiskBadge } from "./RiskBadge";
 
@@ -26,7 +26,9 @@ export function MatrizForm() {
     watch,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<MatrizFormValues>({ resolver: zodResolver(matrizSchema) });
+  } = useForm<MatrizFormInput, unknown, MatrizFormValues>({
+    resolver: zodResolver(matrizSchema),
+  });
 
   const probabilidad = watch("probabilidad");
   const severidad = watch("severidad");
