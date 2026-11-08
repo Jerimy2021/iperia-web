@@ -6,7 +6,7 @@ Panel web de IperIA para supervisores y gerencia: matriz IPERC, OT y dashboard.
 
 ## Stack
 
-React 18 + TypeScript + Vite · React Router 6 · TanStack Query · React Hook Form + Zod · Tailwind CSS · Vitest + Testing Library · Playwright · ESLint + Prettier · MSW (mocks).
+React 18 + TypeScript + Vite · React Router 7 · TanStack Query · React Hook Form + Zod 4 · Tailwind CSS · Vitest + Testing Library · Playwright · ESLint + Prettier · MSW (mocks).
 
 ## Arquitectura
 
@@ -112,6 +112,7 @@ Mientras no se reciban los mockups/export de Claude Design, los valores viven ce
 
 ## Pendientes / deuda técnica conocida
 
-- `npm audit` reporta 1 vulnerabilidad alta en `zod` (<4.6.6, GHSA-mrhx-c7xc-m3w5) y 1 moderada en `react-router`/`react-router-dom` (GHSA-wrjc-x8rr-h8h6, GHSA-337j-9hxr-rhxg — esta última es de SSR, que no aplica aquí porque el proyecto es 100% CSR). Ambos fixes son cambios de versión mayor (zod v4, react-router v7) con cambios de API; no se aplicaron en este sprint para no arriesgar el alcance entregado. Recomendado como ticket propio al inicio del Sprint 2.
-- `npm run api:gen` no se ha corrido todavía: el backend aún no publica swagger. Las rutas/DTOs de IPERC y auth son un contrato asumido (ver secciones arriba) que hay que validar apenas el backend esté disponible.
+- **Resuelto en Sprint 2 (higiene):** se subió `zod` a v4 (cierra GHSA-mrhx-c7xc-m3w5, la alta de prod) y se migró `react-router-dom` v6 → `react-router` v7 (cierra GHSA-wrjc-x8rr-h8h6 / GHSA-337j-9hxr-rhxg). El `npm audit` ya no reporta nada en dependencias de producción.
+- **Deuda restante — solo toolchain de desarrollo:** `npm audit` aún reporta 13 hallazgos (2 críticos, 1 alto, 10 moderados), **todos en devDependencies** (no entran al bundle de producción): `vite`/`esbuild` (dev server), `vitest`/`tinypool`/`@vitest/mocker`/`vite-node` (test runner) y `@typescript-eslint/*` → `minimatch` (linter). Los fixes requieren upgrades de versión mayor del toolchain (`vite@8`, `vitest@5`) o un `overrides` forzando `minimatch@11` (que typescript-eslint aún no soporta: su `typescript-estree` fija `minimatch ^10`). No se aplicaron aquí porque exceden el alcance de estos tres tickets y cambiarían la base de build/test; recomendado como ticket propio "subir toolchain (Vite 8 + Vitest 5)".
+- `npm run api:gen` no se ha corrido todavía: el backend aún no publica swagger. Las rutas/DTOs de IPERC y auth son un contrato asumido (ver secciones arriba) que hay que validar apenas el backend esté disponible. Las rutas ya están centralizadas en `src/infrastructure/http/routes.ts` (un solo lugar donde ajustarlas cuando llegue el OpenAPI); los DTOs manuales siguen en los repositorios a la espera de `api:gen`.
 - Design tokens son un placeholder razonable, pendientes de reemplazo por los mockups reales de Claude Design.
