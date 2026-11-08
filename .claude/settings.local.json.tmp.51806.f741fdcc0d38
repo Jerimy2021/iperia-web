@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'refactor\\(api\\): centralize auth & iperc routes in a single routes.ts *)"
+    ]
+  }
+}

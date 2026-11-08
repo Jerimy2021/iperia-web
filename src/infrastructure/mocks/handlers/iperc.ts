@@ -1,5 +1,6 @@
 import { http, HttpResponse } from "msw";
 import type { MatrizItemInput } from "@core/iperc/MatrizItem";
+import { ipercRoutes } from "@infrastructure/http/routes";
 import { clasificarRiesgoMock, mockMatrizItems } from "../data";
 
 const apiUrl = import.meta.env.VITE_API_URL.replace(/\/$/, "");
@@ -10,16 +11,16 @@ function calcular(probabilidad: number, severidad: number) {
 }
 
 export const ipercHandlers = [
-  http.get(`${apiUrl}/iperc/matriz`, () => {
+  http.get(`${apiUrl}${ipercRoutes.matriz}`, () => {
     return HttpResponse.json(mockMatrizItems);
   }),
 
-  http.post(`${apiUrl}/iperc/matriz/calcular`, async ({ request }) => {
+  http.post(`${apiUrl}${ipercRoutes.calcular}`, async ({ request }) => {
     const body = (await request.json()) as { probabilidad: number; severidad: number };
     return HttpResponse.json(calcular(body.probabilidad, body.severidad));
   }),
 
-  http.post(`${apiUrl}/iperc/matriz`, async ({ request }) => {
+  http.post(`${apiUrl}${ipercRoutes.matriz}`, async ({ request }) => {
     const input = (await request.json()) as MatrizItemInput;
     const { resultado, nivelRiesgo } = calcular(input.probabilidad, input.severidad);
     const created = { id: `m-${mockMatrizItems.length + 1}`, ...input, resultado, nivelRiesgo };
@@ -27,7 +28,7 @@ export const ipercHandlers = [
     return HttpResponse.json(created, { status: 201 });
   }),
 
-  http.put(`${apiUrl}/iperc/matriz/:id`, async ({ request, params }) => {
+  http.put(`${apiUrl}${ipercRoutes.item(":id")}`, async ({ request, params }) => {
     const input = (await request.json()) as MatrizItemInput;
     const { resultado, nivelRiesgo } = calcular(input.probabilidad, input.severidad);
     const index = mockMatrizItems.findIndex((item) => item.id === params.id);
