@@ -1,0 +1,32 @@
+/* IperIA — 4px base grid. Dense industrial layouts lean on 8/12/16. */
+:root{
+  --space-0:0px;
+  --space-1:2px;
+  --space-2:4px;
+  --space-3:6px;
+  --space-4:8px;
+  --space-5:12px;
+  --space-6:16px;
+  --space-7:20px;
+  --space-8:24px;
+  --space-9:32px;
+  --space-10:40px;
+  --space-11:48px;
+  --space-12:64px;
+
+  /* Layout constants */
+  --sidebar-width:248px;
+  --sidebar-width-collapsed:60px;
+  --topbar-height:60px;
+  --bottomnav-height:64px;
+  --rail-width:320px;      /* right-hand alerts rail */
+  --page-gutter:24px;
+  --card-padding:16px;
+  --card-padding-lg:20px;
+  --table-row-height:44px;
+  --control-height-sm:28px;
+  --control-height:36px;
+  --control-height-lg:44px;
+  --touch-target:48px;     /* mobile minimum */
+  --content-max:1440px;
+}

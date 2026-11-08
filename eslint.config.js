@@ -13,6 +13,8 @@ export default tseslint.config(
       "coverage",
       "playwright-report",
       "public",
+      "screenshots",
+      "design-system",
       "src/infrastructure/http/generated",
     ],
   },

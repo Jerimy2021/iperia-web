@@ -1,0 +1,174 @@
+/* IperIA — color system. Base ramps first, semantic aliases below. */
+:root{
+  /* Navy — dark chrome (sidebar, field mode, auth backdrop) */
+  --navy-900:#060D15;
+  --navy-800:#0A141F;
+  --navy-700:#0D1B2A; /* brand navy */
+  --navy-600:#132638;
+  --navy-500:#1B3349;
+  --navy-400:#26445E;
+  --navy-300:#3A5C79;
+  --navy-200:#5B7C99;
+
+  /* Blue — primary action */
+  --blue-700:#1A5FA8;
+  --blue-600:#226FC4;
+  --blue-500:#2E86DE; /* brand blue */
+  --blue-400:#5AA2E8;
+  --blue-300:#8FC0F0;
+  --blue-100:#D6E8FA;
+  --blue-050:#EDF5FD;
+
+  /* Amber — moderate risk / warning */
+  --amber-700:#A87200;
+  --amber-600:#C98A00;
+  --amber-500:#F0A500; /* brand amber */
+  --amber-300:#F7C765;
+  --amber-100:#FDEFCC;
+  --amber-050:#FEF8E9;
+
+  /* Red — critical risk / blocked */
+  --red-700:#96182A;
+  --red-600:#B81E30;
+  --red-500:#D72638; /* brand red */
+  --red-300:#E8737F;
+  --red-100:#F8D4D8;
+  --red-050:#FDECEE;
+
+  /* Green — validated / approved */
+  --green-700:#1B7A42;
+  --green-600:#219653;
+  --green-500:#27AE60; /* brand green */
+  --green-300:#74CB9A;
+  --green-100:#D4EFE0;
+  --green-050:#ECF8F2;
+
+  /* Orange — "Importante" band of the IPERC Línea Base scale.
+     Sits between amber and red; only ever used on that 4-level scale. */
+  --orange-700:#A34600;
+  --orange-600:#C25500;
+  --orange-500:#E2670B;
+  --orange-300:#F2A468;
+  --orange-100:#FBE0CC;
+  --orange-050:#FEF2E9;
+
+  /* Violet — section band of the "Probabilidad" block in the Línea Base matrix.
+     Structural only: it labels a column group, never a risk level. */
+  --violet-700:#463378;
+  --violet-600:#57409A;
+  --violet-500:#6B51B8;
+  --violet-300:#A794DA;
+  --violet-100:#E2DAF4;
+  --violet-050:#F2EEFA;
+
+  /* Neutrals — light UI */
+  --white:#FFFFFF;
+  --surface-100:#F4F6F9; /* brand surface */
+  --surface-200:#EBEEF3;
+  --gray-300:#DDE2EA;
+  --gray-400:#C3CAD6;
+  --gray-500:#9BA3B2;
+  --gray-600:#6B7280; /* brand gray */
+  --gray-700:#4B5563;
+  --gray-800:#2F3947;
+  --gray-900:#1A2230;
+
+  /* ---- Semantic: light surfaces ---- */
+  --bg-app:var(--surface-100);
+  --surface-card:var(--white);
+  --surface-sunken:var(--surface-200);
+  --surface-hover:var(--surface-100);
+  --surface-selected:var(--blue-050);
+  --border-subtle:var(--gray-300);
+  --border-strong:var(--gray-400);
+  --border-focus:var(--blue-500);
+
+  --text-primary:var(--navy-700);
+  --text-body:var(--gray-800);
+  --text-secondary:var(--gray-600);
+  --text-placeholder:var(--gray-500);
+  --text-disabled:var(--gray-400);
+  --text-inverse:var(--white);
+  --text-link:var(--blue-600);
+  --text-link-hover:var(--blue-700);
+
+  /* ---- Semantic: dark chrome ---- */
+  --chrome-bg:var(--navy-700);
+  --chrome-bg-deep:var(--navy-800);
+  --chrome-raised:var(--navy-600);
+  --chrome-hover:var(--navy-500);
+  --chrome-active:var(--blue-500);
+  --chrome-border:var(--navy-500);
+  --chrome-text:#E4EAF2;
+  --chrome-text-muted:var(--navy-200);
+
+  /* ---- Semantic: action ---- */
+  --action-primary:var(--blue-500);
+  --action-primary-hover:var(--blue-600);
+  --action-primary-active:var(--blue-700);
+  --action-danger:var(--red-500);
+  --action-danger-hover:var(--red-600);
+  --action-success:var(--green-500);
+  --action-success-hover:var(--green-600);
+
+  /* ---- Semantic: risk / severity (the core domain scale) ---- */
+  --risk-low:var(--green-500);
+  --risk-low-bg:var(--green-050);
+  --risk-low-border:var(--green-100);
+  --risk-low-text:var(--green-700);
+
+  --risk-moderate:var(--amber-500);
+  --risk-moderate-bg:var(--amber-050);
+  --risk-moderate-border:var(--amber-100);
+  --risk-moderate-text:var(--amber-700);
+
+  --risk-critical:var(--red-500);
+  --risk-critical-bg:var(--red-050);
+  --risk-critical-border:var(--red-100);
+  --risk-critical-text:var(--red-700);
+
+  --risk-none:var(--gray-400);
+  --risk-none-bg:var(--surface-200);
+  --risk-none-border:var(--gray-300);
+  --risk-none-text:var(--gray-600);
+
+  --info:var(--blue-500);
+  --info-bg:var(--blue-050);
+  --info-border:var(--blue-100);
+  --info-text:var(--blue-700);
+
+  /* ---- Blockchain / verification accents ---- */
+  --chain-verified:var(--green-500);
+  --chain-pending:var(--amber-500);
+  --chain-failed:var(--red-500);
+  --hash-bg:var(--surface-200);
+  --hash-text:var(--navy-700);
+
+  /* ---- IPERC Línea Base: 4-level R = P × S scale ----
+     Aceptable ≤16 · Moderado 17–35 · Importante 36–59 · Intolerante ≥60 */
+  --nivel-aceptable:var(--green-500);
+  --nivel-aceptable-bg:var(--green-050);
+  --nivel-aceptable-text:var(--green-700);
+  --nivel-moderado:var(--amber-500);
+  --nivel-moderado-bg:var(--amber-050);
+  --nivel-moderado-text:var(--amber-700);
+  --nivel-importante:var(--orange-500);
+  --nivel-importante-bg:var(--orange-050);
+  --nivel-importante-text:var(--orange-700);
+  --nivel-intolerante:var(--red-500);
+  --nivel-intolerante-bg:var(--red-050);
+  --nivel-intolerante-text:var(--red-700);
+
+  /* ---- Línea Base matrix section bands ---- */
+  --band-base:var(--navy-700);
+  --band-control:var(--blue-500);
+  --band-control-wash:var(--blue-050);
+  --band-prob:var(--violet-500);
+  --band-prob-wash:var(--violet-050);
+  --band-sev:var(--red-500);
+  --band-sev-wash:var(--red-050);
+  --band-mejora:var(--green-500);
+  --band-mejora-wash:var(--green-050);
+  --band-calc:#FFF3C4; /* the auto-calculated P cell — yellow by regulation convention */
+  --band-calc-border:var(--amber-300);
+}

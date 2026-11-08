@@ -30,3 +30,7 @@ src/infrastructure/http/generated/
 .DS_Store
 *.log
 npm-debug.log*
+
+# Design System export (referencia local, no se versiona)
+design-system/
+screenshots/

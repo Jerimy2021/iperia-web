@@ -10,5 +10,8 @@ test("un supervisor inicia sesión y llega a la matriz IPERC", async ({ page }) 
 
   await expect(page).toHaveURL(/\/iperc$/);
   await expect(page.getByRole("heading", { name: "Matriz IPERC" })).toBeVisible();
-  await expect(page.getByText("Lucía Supervisor · Supervisor")).toBeVisible();
+  // The authenticated shell (sidebar + topbar) is rendered: the user's name and
+  // the logout action are visible.
+  await expect(page.getByText("Lucía Supervisor").first()).toBeVisible();
+  await expect(page.getByRole("button", { name: "Cerrar sesión" })).toBeVisible();
 });

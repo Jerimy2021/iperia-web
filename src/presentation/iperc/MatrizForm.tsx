@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "@shared/i18n/useTranslation";
 import { TextField } from "@shared/ui/TextField";
 import { Button } from "@shared/ui/Button";
+import { Card } from "@shared/ui/Card";
 import { ErrorMessage } from "@shared/ui/ErrorMessage";
 import { matrizSchema, type MatrizFormInput, type MatrizFormValues } from "./matrizSchema";
 import { useCalcularRiesgo, useSaveMatrizItem } from "./useMatriz";
@@ -57,37 +58,42 @@ export function MatrizForm() {
   ];
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      noValidate
-      className="flex flex-col gap-4 rounded-lg border border-neutral-200 bg-neutral-0 p-4"
-    >
-      <h2 className="text-lg font-medium text-neutral-900">{t.iperc.matriz.newItem}</h2>
+    <Card title={t.iperc.matriz.newItem} icon="square-pen">
+      <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {fields.map(({ name, type }) => (
+            <TextField
+              key={name}
+              label={t.iperc.matriz.fields[name]}
+              type={type}
+              min={type === "number" ? 1 : undefined}
+              max={type === "number" ? 5 : undefined}
+              error={errors[name]?.message}
+              {...register(name)}
+            />
+          ))}
+        </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        {fields.map(({ name, type }) => (
-          <TextField
-            key={name}
-            label={t.iperc.matriz.fields[name]}
-            type={type}
-            min={type === "number" ? 1 : undefined}
-            max={type === "number" ? 5 : undefined}
-            error={errors[name]?.message}
-            {...register(name)}
-          />
-        ))}
-      </div>
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[color:var(--border-subtle)] pt-4">
+          {calcular.data ? (
+            <RiskBadge nivelRiesgo={calcular.data.nivelRiesgo} resultado={calcular.data.resultado} />
+          ) : (
+            <span className="text-base text-[color:var(--text-secondary)]">
+              {t.iperc.matriz.fields.nivelRiesgo}
+            </span>
+          )}
+          <Button
+            type="submit"
+            icon="calculator"
+            isLoading={isSubmitting || save.isPending}
+            className="ml-auto"
+          >
+            {isSubmitting || save.isPending ? t.iperc.matriz.submitting : t.iperc.matriz.submit}
+          </Button>
+        </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        {calcular.data && (
-          <RiskBadge nivelRiesgo={calcular.data.nivelRiesgo} resultado={calcular.data.resultado} />
-        )}
-        <Button type="submit" isLoading={isSubmitting || save.isPending} className="ml-auto">
-          {isSubmitting || save.isPending ? t.iperc.matriz.submitting : t.iperc.matriz.submit}
-        </Button>
-      </div>
-
-      {save.isError && <ErrorMessage message={t.iperc.matriz.saveError} />}
-    </form>
+        {save.isError && <ErrorMessage message={t.iperc.matriz.saveError} />}
+      </form>
+    </Card>
   );
 }
