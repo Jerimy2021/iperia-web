@@ -1,0 +1,48 @@
+/* IperIA — typography. Inter for everything; JetBrains Mono for hashes/IDs. */
+:root{
+  --font-sans:'Inter','Inter var',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono','SFMono-Regular',Menlo,Consolas,monospace;
+
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+  --weight-bold:700;
+
+  /* Scale — high information density: small steps, tight leading */
+  --text-2xs:10px;
+  --text-xs:11px;
+  --text-sm:12px;
+  --text-base:13px;
+  --text-md:14px;
+  --text-lg:16px;
+  --text-xl:18px;
+  --text-2xl:22px;
+  --text-3xl:28px;
+  --text-4xl:34px;
+  --text-5xl:44px;
+
+  --leading-tight:1.15;
+  --leading-snug:1.3;
+  --leading-normal:1.45;
+  --leading-relaxed:1.6;
+
+  --tracking-tighter:-0.02em;
+  --tracking-tight:-0.01em;
+  --tracking-normal:0;
+  --tracking-wide:0.04em;
+  --tracking-widest:0.1em; /* eyebrow / overline labels */
+
+  /* Semantic roles */
+  --type-display:var(--weight-bold) var(--text-4xl)/var(--leading-tight) var(--font-sans);
+  --type-h1:var(--weight-bold) var(--text-2xl)/var(--leading-snug) var(--font-sans);
+  --type-h2:var(--weight-semibold) var(--text-xl)/var(--leading-snug) var(--font-sans);
+  --type-h3:var(--weight-semibold) var(--text-lg)/var(--leading-snug) var(--font-sans);
+  --type-body:var(--weight-regular) var(--text-md)/var(--leading-normal) var(--font-sans);
+  --type-body-sm:var(--weight-regular) var(--text-base)/var(--leading-normal) var(--font-sans);
+  --type-label:var(--weight-medium) var(--text-base)/var(--leading-snug) var(--font-sans);
+  --type-label-sm:var(--weight-medium) var(--text-sm)/var(--leading-snug) var(--font-sans);
+  --type-overline:var(--weight-semibold) var(--text-2xs)/var(--leading-snug) var(--font-sans);
+  --type-metric:var(--weight-bold) var(--text-3xl)/var(--leading-tight) var(--font-sans);
+  --type-mono:var(--weight-regular) var(--text-sm)/var(--leading-snug) var(--font-mono);
+  --type-table:var(--weight-regular) var(--text-base)/var(--leading-snug) var(--font-sans);
+}

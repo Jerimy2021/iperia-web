@@ -1,0 +1,4 @@
+/* Webfonts. No binaries were supplied with the brief, so Inter and JetBrains
+   Mono are loaded from Google Fonts. Drop real .woff2 files into assets/fonts/
+   and replace these @import lines with @font-face rules if licensed copies exist. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');

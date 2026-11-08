@@ -1,0 +1,48 @@
+/* IperIA — radii, borders, elevation, motion. No decorative gradients. */
+:root{
+  --radius-none:0px;
+  --radius-xs:3px;
+  --radius-sm:4px;
+  --radius-md:6px;
+  --radius-lg:8px;
+  --radius-xl:12px;
+  --radius-2xl:16px;
+  --radius-pill:999px;
+
+  --border-width:1px;
+  --border-width-thick:2px;
+  --border-accent-width:3px; /* severity edge on alert rows */
+
+  /* Soft, low-contrast shadows only — never colored glows */
+  --shadow-xs:0 1px 2px rgba(13,27,42,.06);
+  --shadow-sm:0 1px 3px rgba(13,27,42,.08),0 1px 2px rgba(13,27,42,.04);
+  --shadow-md:0 2px 8px rgba(13,27,42,.08),0 1px 2px rgba(13,27,42,.04);
+  --shadow-lg:0 8px 24px rgba(13,27,42,.10),0 2px 6px rgba(13,27,42,.05);
+  --shadow-xl:0 16px 48px rgba(13,27,42,.16);
+  --shadow-inset:inset 0 1px 2px rgba(13,27,42,.06);
+  --ring-focus:0 0 0 3px rgba(46,134,222,.28);
+  --ring-danger:0 0 0 3px rgba(215,38,56,.26);
+
+  /* Overlays for camera / photo surfaces */
+  --scrim-top:linear-gradient(to bottom,rgba(6,13,21,.82),rgba(6,13,21,0)); /* @kind other */
+  --scrim-bottom:linear-gradient(to top,rgba(6,13,21,.88),rgba(6,13,21,0)); /* @kind other */
+  --scrim-flat:rgba(6,13,21,.62);
+  --glass-dark:rgba(10,20,31,.72);
+
+  /* Motion — functional, short, no bounce */
+  --ease-standard:cubic-bezier(.2,0,.2,1); /* @kind other */
+  --ease-out:cubic-bezier(0,0,.2,1); /* @kind other */
+  --ease-in:cubic-bezier(.4,0,1,1); /* @kind other */
+  --dur-instant:80ms; /* @kind other */
+  --dur-fast:120ms; /* @kind other */
+  --dur-normal:180ms; /* @kind other */
+  --dur-slow:260ms; /* @kind other */
+  --transition-control:background-color var(--dur-fast) var(--ease-standard),border-color var(--dur-fast) var(--ease-standard),color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard); /* @kind other */
+
+  --z-base:0; /* @kind other */
+  --z-sticky:10; /* @kind other */
+  --z-chrome:20; /* @kind other */
+  --z-overlay:40; /* @kind other */
+  --z-modal:50; /* @kind other */
+  --z-toast:60; /* @kind other */
+}

@@ -1,15 +1,86 @@
+/* IperIA design tokens (ported from the Claude Design System export). The
+   :root variables are the single source of truth; tailwind.config.cjs mirrors
+   them so Tailwind utilities and raw var() usage stay in sync. */
+@import "./shared/tokens/fonts.css";
+@import "./shared/tokens/colors.css";
+@import "./shared/tokens/typography.css";
+@import "./shared/tokens/spacing.css";
+@import "./shared/tokens/shape.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply font-sans text-neutral-900;
+/* Element defaults from the DS base layer, placed after Tailwind's preflight so
+   they win (headings, body type, links, focus ring). */
+@layer base {
+  body {
+    background: var(--bg-app);
+    color: var(--text-body);
+    font: var(--type-body);
+    letter-spacing: var(--tracking-tight);
+    -webkit-font-smoothing: antialiased;
+    text-wrap: pretty;
+  }
+  h1 {
+    font: var(--type-h1);
+    color: var(--text-primary);
+  }
+  h2 {
+    font: var(--type-h2);
+    color: var(--text-primary);
+  }
+  h3 {
+    font: var(--type-h3);
+    color: var(--text-primary);
+  }
+  a {
+    color: var(--text-link);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--text-link-hover);
+    text-decoration: underline;
+  }
+  code,
+  kbd,
+  samp,
+  pre {
+    font: var(--type-mono);
+  }
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--ring-focus);
+  }
+  ::placeholder {
+    color: var(--text-placeholder);
+  }
+  ::selection {
+    background: var(--blue-100);
+    color: var(--navy-700);
+  }
 }
 
-body {
-  @apply bg-neutral-50;
+/* Functional animations used by Spinner / Skeleton / alert rings. */
+@keyframes iperia-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
-
-:focus-visible {
-  @apply outline outline-2 outline-offset-2 outline-brand-600;
+@keyframes iperia-shimmer {
+  0% {
+    background-position: -320px 0;
+  }
+  100% {
+    background-position: 320px 0;
+  }
+}
+@keyframes iperia-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
 }

@@ -1,14 +1,21 @@
-import rawTokens from "./design-tokens.json";
+import type { RiskLevel } from "@core/iperc/RiskLevel";
 
 /**
- * Fuente única de verdad para colores/tipografía/espaciado.
- * tailwind.config.cjs lee el mismo design-tokens.json, así que un cambio
- * aquí se refleja en Tailwind y en el código que use estas constantes
- * directamente (ej. estilos inline, canvas, charts) sin tocar nada más.
+ * Risk-level color helpers. The design tokens themselves live as CSS variables
+ * in `src/shared/tokens/*.css` (mirrored by tailwind.config.cjs); this module
+ * just maps the core `RiskLevel` to its DS color token for places that need a
+ * raw color string (inline styles, canvas, charts).
+ *
+ * Note the DS spells the band "intolerante"; core keeps "intolerable". We only
+ * map the color — the R = P × S thresholds are owned by the backend and never
+ * reproduced here.
  */
-export const tokens = rawTokens;
-
-export type RiskLevel = keyof typeof rawTokens.colors.risk;
+const riskVar: Record<RiskLevel, string> = {
+  aceptable: "var(--nivel-aceptable)",
+  moderado: "var(--nivel-moderado)",
+  importante: "var(--nivel-importante)",
+  intolerable: "var(--nivel-intolerante)",
+};
 
 export const RISK_LEVELS: readonly RiskLevel[] = [
   "aceptable",
@@ -18,7 +25,7 @@ export const RISK_LEVELS: readonly RiskLevel[] = [
 ] as const;
 
 export function riskColor(level: RiskLevel): string {
-  return rawTokens.colors.risk[level];
+  return riskVar[level];
 }
 
 export function isRiskLevel(value: string): value is RiskLevel {
