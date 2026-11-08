@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 import { useTranslation } from "@shared/i18n/useTranslation";
 import { useAuth } from "@presentation/auth/useAuth";
 import { canAccessMatrizIperc } from "@application/auth/permissions";

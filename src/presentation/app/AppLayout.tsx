@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router";
 import { useTranslation } from "@shared/i18n/useTranslation";
 import { Button } from "@shared/ui/Button";
 import { useAuth } from "@presentation/auth/useAuth";

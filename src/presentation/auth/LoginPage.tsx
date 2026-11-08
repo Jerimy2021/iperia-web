@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useLocation, useNavigate, type Location } from "react-router-dom";
+import { useLocation, useNavigate, type Location } from "react-router";
 import { useTranslation } from "@shared/i18n/useTranslation";
 import { TextField } from "@shared/ui/TextField";
 import { Button } from "@shared/ui/Button";

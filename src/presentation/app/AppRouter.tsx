@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router";
 import { LoginPage } from "@presentation/auth/LoginPage";
 import { MatrizPage } from "@presentation/iperc/MatrizPage";
 import { useAuth } from "@presentation/auth/useAuth";
