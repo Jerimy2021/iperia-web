@@ -30,6 +30,11 @@ export const es = {
   },
   nav: {
     matriz: "Matriz IPERC",
+    section: "Operación",
+    openMenu: "Abrir menú",
+    closeMenu: "Cerrar menú",
+    collapse: "Colapsar",
+    expand: "Expandir",
     roles: {
       OPERARIO: "Operario",
       SUPERVISOR: "Supervisor",
