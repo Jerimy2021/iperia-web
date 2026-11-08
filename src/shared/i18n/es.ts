@@ -21,6 +21,8 @@ export const es = {
       invalidEmail: "Ingresa un correo válido",
       invalidCredentials: "Correo o contraseña incorrectos",
       genericError: "No se pudo iniciar sesión. Intenta de nuevo.",
+      trustNote: "Cada acción queda sellada en cadena con tu identidad y su timestamp.",
+      tagline: "Traza · Verifica · Protege",
     },
     session: {
       expiredMessage: "Tu sesión expiró. Vuelve a iniciar sesión.",

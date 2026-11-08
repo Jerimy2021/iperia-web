@@ -10,6 +10,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean;
   /** lucide glyph id rendered before the label */
   icon?: string;
+  /** lucide glyph id rendered after the label */
+  iconRight?: string;
   block?: boolean;
 }
 
@@ -41,6 +43,7 @@ export function Button({
   size = "md",
   isLoading = false,
   icon,
+  iconRight,
   block = false,
   disabled,
   className = "",
@@ -60,6 +63,7 @@ export function Button({
         icon && <Icon name={icon} size={iconSize[size]} />
       )}
       {children}
+      {iconRight && !isLoading && <Icon name={iconRight} size={iconSize[size]} />}
     </button>
   );
 }
