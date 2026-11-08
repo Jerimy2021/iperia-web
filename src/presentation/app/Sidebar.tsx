@@ -74,11 +74,13 @@ export function Sidebar({
 
       {/* Nav items */}
       <div className="min-h-0 flex-1 overflow-y-auto px-2.5 py-2.5">
-        <p
-          className={`px-2.5 pb-1.5 text-2xs font-semibold uppercase tracking-[0.1em] text-[color:var(--chrome-text-muted)] ${hideOnCollapse}`}
-        >
-          {t.nav.section}
-        </p>
+        {items.length > 0 && (
+          <p
+            className={`px-2.5 pb-1.5 text-2xs font-semibold uppercase tracking-[0.1em] text-[color:var(--chrome-text-muted)] ${hideOnCollapse}`}
+          >
+            {t.nav.section}
+          </p>
+        )}
         <div className="flex flex-col gap-0.5">
           {items.map((item) => (
             <NavLink
