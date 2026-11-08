@@ -26,6 +26,12 @@
             nodejs_22
             gh
             playwright-driver.browsers
+
+            # LSPs per-proyecto: Neovim (sin Mason) los busca en el PATH que
+            # direnv inyecta al entrar a la carpeta, no los instala él mismo.
+            typescript # tsc / tipos
+            typescript-language-server # el LSP que nvim lanza con --stdio
+            vscode-langservers-extracted # eslint / html / css / json LSP
           ];
 
           shellHook = ''

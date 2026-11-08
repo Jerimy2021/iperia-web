@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router";
 import { useAuth } from "@presentation/auth/useAuth";
 import { canAccessMatrizIperc } from "@application/auth/permissions";
 import { NoScreensPage } from "./NoScreensPage";

@@ -1,10 +1,11 @@
 import { http, HttpResponse } from "msw";
+import { authRoutes } from "@infrastructure/http/routes";
 import { mockUsers } from "../data";
 
 const apiUrl = import.meta.env.VITE_API_URL.replace(/\/$/, "");
 
 export const authHandlers = [
-  http.post(`${apiUrl}/auth/login`, async ({ request }) => {
+  http.post(`${apiUrl}${authRoutes.login}`, async ({ request }) => {
     const body = (await request.json()) as { email?: string; password?: string };
     const match = mockUsers.find(
       (user) => user.email === body.email && user.password === body.password,
@@ -24,7 +25,7 @@ export const authHandlers = [
     });
   }),
 
-  http.post(`${apiUrl}/auth/logout`, () => {
+  http.post(`${apiUrl}${authRoutes.logout}`, () => {
     return new HttpResponse(null, { status: 204 });
   }),
 ];

@@ -1,16 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router";
 import { AuthProvider } from "./AuthContext";
 import { LoginPage } from "./LoginPage";
 
 function renderLoginPage() {
   return render(
-    <MemoryRouter
-      initialEntries={["/login"]}
-      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
-    >
+    <MemoryRouter initialEntries={["/login"]}>
       <AuthProvider>
         <LoginPage />
       </AuthProvider>

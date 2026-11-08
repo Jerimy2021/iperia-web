@@ -1,6 +1,7 @@
 import type { AuthRepository, LoginCredentials } from "@application/auth/ports";
 import type { Session } from "@core/auth/Session";
 import { apiRequest } from "@infrastructure/http/apiClient";
+import { authRoutes } from "@infrastructure/http/routes";
 
 /**
  * DTOs de la respuesta cruda del backend. Reemplazar por los tipos de
@@ -17,7 +18,7 @@ interface LoginResponseDto {
 
 export class AuthHttpRepository implements AuthRepository {
   async login(credentials: LoginCredentials): Promise<Session> {
-    const dto = await apiRequest<LoginResponseDto>("/auth/login", {
+    const dto = await apiRequest<LoginResponseDto>(authRoutes.login, {
       method: "POST",
       body: credentials,
     });
@@ -30,6 +31,6 @@ export class AuthHttpRepository implements AuthRepository {
   }
 
   async logout(): Promise<void> {
-    await apiRequest<void>("/auth/logout", { method: "POST" });
+    await apiRequest<void>(authRoutes.logout, { method: "POST" });
   }
 }
